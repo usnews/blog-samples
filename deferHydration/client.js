@@ -41,7 +41,7 @@ export default (load, {
                 );
             });
 
-            ReactDOM.hydrate(<Child {...this.props} />, this.root, cb);
+            ReactDOM.hydrate(<ContextWrapper {...this.props} />, this.root, cb);
         };
 
         componentDidMount() {
