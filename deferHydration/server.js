@@ -1,5 +1,9 @@
 import React from 'react';
 
+export const declareContext = () => {
+    // do nothing; we include this here because client and server api must be identical
+};
+
 const resolveModule = (universal) => {
     if (universal && universal.resolve) {
         const id = universal.resolve();

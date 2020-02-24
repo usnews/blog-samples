@@ -1,6 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// contexts store
+const contexts = [];
+
+export const declareContext = Context => {
+    contexts.push(Context);
+};
+
 export default (load, {
     wrapperStyle,
     trigger = 'view',
@@ -19,6 +26,21 @@ export default (load, {
         hydrate = async (cb) => {
             const mod = await load();
             const Child = mod && mod.default || mod;
+
+            let ContextWrapper = props => (
+                <Child {...props} />
+            );
+
+            // Loop through declared context Providers and apply them.
+            contexts.map(({ Provider }) => {
+                const WrappedContent = ContextWrapper;
+                ContextWrapper = props => (
+                    <Provider>
+                        <WrappedContent {...props} />
+                    </Provider>
+                );
+            });
+
             ReactDOM.hydrate(<Child {...this.props} />, this.root, cb);
         };
 
