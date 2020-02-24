@@ -50,4 +50,4 @@ and the Header would be placeable in your JSX (with ordinary props, etc.) like n
 ## Dependencies
 
 For this code to work as intended, your project must use https://github.com/faceyspacey/babel-plugin-universal-import
-to trasform import statements into universal imports that work as expected on both the client and server.
+to transform import statements into universal imports that work as expected on both the client and server.
